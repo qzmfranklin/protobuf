@@ -55,7 +55,7 @@ LINK_OPTS = select({
 })
 
 load(
-    ":protobuf.bzl",
+    "//tools/build_rules/protobuf:protobuf.bzl",
     "cc_proto_library",
     "py_proto_library",
     "internal_copied_filegroup",
