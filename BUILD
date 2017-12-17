@@ -482,7 +482,7 @@ cc_binary(
     deps = [
         ":protobuf",
         ":protoc_lib",
-        "//external:gtest",
+        "//third_party/cc/gtest:gtest",
     ],
 )
 
@@ -491,7 +491,7 @@ cc_test(
     srcs = ["src/google/protobuf/stubs/io_win32_unittest.cc"],
     deps = [
         ":protobuf_lite",
-        "//external:gtest_main",
+        "//third_party/cc/gtest:gtest_main",
     ],
     tags = ["manual", "windows"],
 )
@@ -590,7 +590,7 @@ cc_test(
         ":cc_test_protos",
         ":protobuf",
         ":protoc_lib",
-        "//external:gtest_main",
+        "//third_party/cc/gtest:gtest_main",
     ],
 )
 
@@ -658,7 +658,9 @@ cc_binary(
     linkstatic = 1,
     deps = select({
         "//conditions:default": [],
-        ":use_fast_cpp_protos": ["//external:python_headers"],
+        ":use_fast_cpp_protos": [
+            "//%s/util/python:python_headers" % package_name(),
+        ],
     }),
 )
 
@@ -684,7 +686,9 @@ cc_binary(
         ":protobuf",
     ] + select({
         "//conditions:default": [],
-        ":use_fast_cpp_protos": ["//external:python_headers"],
+        ":use_fast_cpp_protos": [
+            "//%s/util/python:python_headers" % package_name(),
+        ],
     }),
 )
 
@@ -733,7 +737,7 @@ py_proto_library(
     protoc = ":protoc",
     py_libs = [
         ":python_srcs",
-        "//external:six",
+        "//third_party/python/six",
     ],
     py_extra_srcs = glob(["python/**/__init__.py"]),
     srcs_version = "PY2AND3",
