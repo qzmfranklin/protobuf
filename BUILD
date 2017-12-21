@@ -659,7 +659,8 @@ cc_binary(
     deps = select({
         "//conditions:default": [],
         ":use_fast_cpp_protos": [
-            "//%s/util/python:python_headers" % package_name(),
+            #"//%s/util/python:python_headers" % package_name(),
+            "//third_party/cc/cpython:cpython",
         ],
     }),
 )
@@ -687,7 +688,8 @@ cc_binary(
     ] + select({
         "//conditions:default": [],
         ":use_fast_cpp_protos": [
-            "//%s/util/python:python_headers" % package_name(),
+            #"//%s/util/python:python_headers" % package_name(),
+            "//third_party/cc/cpython:cpython",
         ],
     }),
 )
